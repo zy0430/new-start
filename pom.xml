@@ -24,6 +24,7 @@
         <module>spring-boot-thymeleaf</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-mybatis/spring-boot-mybatis-annotation</module>
+        <module>spring-boot-mybatis/spring-boot-mybatis-xml</module>
     </modules>
 
     <build>

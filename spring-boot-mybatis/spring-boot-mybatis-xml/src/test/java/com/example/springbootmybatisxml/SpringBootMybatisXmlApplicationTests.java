@@ -1,10 +1,10 @@
-package com.example.springbootmybatisannotation;
+package com.example.springbootmybatisxml;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootMybatisAnnotationApplicationTests {
+class SpringBootMybatisXmlApplicationTests {
 
     @Test
     void contextLoads() {
