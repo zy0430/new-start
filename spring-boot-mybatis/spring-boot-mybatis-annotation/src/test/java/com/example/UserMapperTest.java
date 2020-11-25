@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.mapper.UserMapper1;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.model.User;
 import com.example.enums.UserSexEnum;
-import com.example.mapper.UserMapper;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class UserMapperTest {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserMapper1 userMapper;
 
 //    @Test()
     public void insertUser() {

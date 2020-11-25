@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
-public interface UserMapper {
+public interface UserMapper1 {
         @Select("select * from user")
         @Results({
             @Result(property = "userSex", column = "user_sex", javaType = UserSexEnum.class),
