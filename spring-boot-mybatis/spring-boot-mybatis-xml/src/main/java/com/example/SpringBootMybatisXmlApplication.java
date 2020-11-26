@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.example.mapper.UserMapper")
+@MapperScan("com.example.mapper")
 public class SpringBootMybatisXmlApplication {
 
     public static void main(String[] args) {
