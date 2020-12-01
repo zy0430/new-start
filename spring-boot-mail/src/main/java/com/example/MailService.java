@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.List;
+
 public interface MailService {
     void sendSimpleMail(String to, String subject, String content);
 
