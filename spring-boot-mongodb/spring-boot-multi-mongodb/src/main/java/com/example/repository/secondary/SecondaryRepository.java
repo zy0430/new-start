@@ -1,10 +1,10 @@
-package com.neo.repository.secondary;
+package com.example.repository.secondary;
 
-import com.neo.model.User;
+import com.example.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
- * @author neo
+ * @author
  */
 public interface SecondaryRepository extends MongoRepository<User, String> {
 }

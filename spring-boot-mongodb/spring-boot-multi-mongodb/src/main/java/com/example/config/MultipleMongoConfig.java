@@ -1,8 +1,8 @@
-package com.neo.config;
+package com.example.config;
 
-import com.mongodb.MongoClient;
+import com.example.config.props.MultipleMongoProperties;
 import com.mongodb.MongoClientURI;
-import com.neo.config.props.MultipleMongoProperties;
+import com.mongodb.MongoClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.mongo.MongoProperties;
@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+
 
 @Configuration
 public class MultipleMongoConfig {
