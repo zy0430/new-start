@@ -24,7 +24,7 @@ public class MailServiceTest {
 
     //    @Test
     public void sendMail() {
-        mailService.sendSimpleMail("z6488834134@163.com", "test simple mail", " hello this is simple mail");
+        mailService.sendSimpleMail("xxxxxx@163.com", "test simple mail", " hello this is simple mail");
     }
 
 //    @Test
@@ -34,13 +34,13 @@ public class MailServiceTest {
                 "    <h3>hello world ! 这是一封Html邮件!</h3>\n" +
                 "</body>\n" +
                 "</html>";
-        mailService.sendHtmlMail("z6488834134@163.com", "html", content);
+        mailService.sendHtmlMail("xxxxxx@163.com", "html", content);
     }
 
 //    @Test
     public void sendAttachmentsMail() {
         String filePath = "C:\\Users\\章鱼哥\\Desktop\\hello.txt";
-        mailService.sendAttachmentsMail("z6488834134@163.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
+        mailService.sendAttachmentsMail("xxxxxx@163.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
     }
 
 //    @Test
@@ -58,7 +58,7 @@ public class MailServiceTest {
         List<String> imgPaths = new ArrayList<>();
         imgPaths.add(imgPath);
         imgPaths.add(imgPath2);
-        mailService.sendInlineResourceMail("z6488834134@163.com", "主题：这是有图片的邮件", content, rscIds, imgPaths);
+        mailService.sendInlineResourceMail("xxxxxx@163.com", "主题：这是有图片的邮件", content, rscIds, imgPaths);
     }
 
     @Test
@@ -66,6 +66,6 @@ public class MailServiceTest {
         Context context = new Context();
         context.setVariable("id", "006");
         String emailContent =templateEngine.process("emailTemplate", context);
-        mailService.sendHtmlMail("z6488834134@163.com", "模板", emailContent);
+        mailService.sendHtmlMail("xxxxxx@163.com", "模板", emailContent);
     }
 }
