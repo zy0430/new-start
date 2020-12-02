@@ -6,6 +6,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,10 @@ import java.util.List;
 public class MailServiceTest {
 
     @Autowired
-    MailService mailService;
+    private MailService mailService;
+
+    @Autowired
+    private TemplateEngine templateEngine;
 
     //    @Test
     public void sendMail() {
@@ -38,12 +43,29 @@ public class MailServiceTest {
         mailService.sendAttachmentsMail("z6488834134@163.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
     }
 
-    @Test
+//    @Test
     public void sendInlineResourceMail() {
         String rscId = "neo666";
+        String rscId2 = "777";
+        List<String> rscIds = new ArrayList<>();
+        rscIds.add(rscId);
+        rscIds.add(rscId2);
 
-        String content = "<html><body>这是有图片的邮件：<img src=\'cid:" + rscId + "\' ><img src=\'cid:" + rscId + "\' ></body></html>";
-        String imgPath = "C:\\Users\\章鱼哥\\Desktop\\Capture001.png";
-        mailService.sendInlineResourceMail("z6488834134@163.com", "主题：这是有图片的邮件", content, imgPath, rscId);
+        String content = "<html><body>这是有图片的邮件：<img src=\'cid:" + rscId + "\' ><img src=\'cid:" + rscId2 + "\' ></body></html>";
+        String imgPath = "C:\\Users\\hsrg\\Desktop\\free呼吸1.5\\0915\\3.png";
+        String imgPath2 = "C:\\Users\\hsrg\\Desktop\\free呼吸1.5\\0915\\4.png";
+
+        List<String> imgPaths = new ArrayList<>();
+        imgPaths.add(imgPath);
+        imgPaths.add(imgPath2);
+        mailService.sendInlineResourceMail("z6488834134@163.com", "主题：这是有图片的邮件", content, rscIds, imgPaths);
+    }
+
+    @Test
+    public void sendTemplateMail() {
+        Context context = new Context();
+        context.setVariable("id", "006");
+        String emailContent =templateEngine.process("emailTemplate", context);
+        mailService.sendHtmlMail("z6488834134@163.com", "模板", emailContent);
     }
 }

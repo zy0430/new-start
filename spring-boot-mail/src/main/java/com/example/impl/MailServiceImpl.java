@@ -85,7 +85,7 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public void sendInlineResourceMail(String to, String subject, String content, String rscPath, String rscId) {
+    public void sendInlineResourceMail(String to, String subject, String content, List<String> rscIds,  List<String> rscPaths) {
         MimeMessage message = mailSender.createMimeMessage();
 
         try {
@@ -95,11 +95,10 @@ public class MailServiceImpl implements MailService {
             helper.setSubject(subject);
             helper.setText(content, true);
 
-            FileSystemResource res = new FileSystemResource(new File(rscPath));
-            FileSystemResource res2 = new FileSystemResource(new File("C:\\Users\\章鱼哥\\Desktop\\Capture002.png"));
-            helper.addInline(rscId, res);
-            helper.addInline("777", res2);
-
+            for (int i = 0; i < rscIds.size(); i++) {
+                FileSystemResource res = new FileSystemResource(new File(rscPaths.get(i)));
+                helper.addInline(rscIds.get(i), res);
+            }
             mailSender.send(message);
             logger.info("嵌入静态资源的邮件已经发送。");
         } catch (MessagingException e) {
