@@ -15,24 +15,28 @@ import java.util.List;
 @SpringBootTest
 public class MuliDatabaseTest {
     @Autowired
-    PrimaryRepository primaryRepository;
+    private PrimaryRepository primaryRepository;
 
     @Autowired
-    SecondaryRepository secondaryRepository;
+    private SecondaryRepository secondaryRepository;
 
     @Test
-    public void mongoTest() {
-        primaryRepository.save(new User("xz", "123456"));
-        secondaryRepository.save(new User("xz", "123456"));
-
-        List<User> users = primaryRepository.findAll();
-        for (User user : users) {
-            System.out.println(user.toString());
+    public void TestSave() {
+        System.out.println("************************************************************");
+        System.out.println("测试开始");
+        System.out.println("************************************************************");
+        this.primaryRepository.save(new User("小张", "123456"));
+        this.secondaryRepository.save(new User("小王", "654321"));
+        List<User> primaries = this.primaryRepository.findAll();
+        for (User primary : primaries) {
+            System.out.println(primary.toString());
         }
-
-        List<User> users2 = secondaryRepository.findAll();
-        for (User user : users2) {
-            System.out.println(user.toString());
+        List<User> secondaries = this.secondaryRepository.findAll();
+        for (User secondary : secondaries) {
+            System.out.println(secondary.toString());
         }
+        System.out.println("************************************************************");
+        System.out.println("测试完成");
+        System.out.println("************************************************************");
     }
 }

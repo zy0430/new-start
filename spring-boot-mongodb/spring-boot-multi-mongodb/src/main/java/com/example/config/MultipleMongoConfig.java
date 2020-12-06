@@ -1,8 +1,8 @@
 package com.example.config;
 
-import com.example.config.props.MultipleMongoProperties;
-import com.mongodb.MongoClientURI;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.example.config.props.MultipleMongoProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.mongo.MongoProperties;
@@ -13,12 +13,11 @@ import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 
-
 @Configuration
 public class MultipleMongoConfig {
 
 	@Autowired
-    private MultipleMongoProperties mongoProperties;
+	private MultipleMongoProperties mongoProperties;
 
 	@Primary
 	@Bean(name = "primaryMongoTemplate")
@@ -29,11 +28,11 @@ public class MultipleMongoConfig {
 	@Bean
 	@Qualifier("secondaryMongoTemplate")
 	public MongoTemplate secondaryMongoTemplate() throws Exception {
-        return new MongoTemplate(secondaryFactory(this.mongoProperties.getSecondary()));
+		return new MongoTemplate(secondaryFactory(this.mongoProperties.getSecondary()));
 	}
 
 	@Bean
-    @Primary
+	@Primary
 	public MongoDbFactory primaryFactory(MongoProperties mongo) throws Exception {
 		MongoClient client = new MongoClient(new MongoClientURI(mongoProperties.getPrimary().getUri()));
 		return new SimpleMongoDbFactory(client, mongoProperties.getPrimary().getDatabase());

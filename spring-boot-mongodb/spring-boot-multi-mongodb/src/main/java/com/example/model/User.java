@@ -1,24 +1,49 @@
 package com.example.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.io.Serializable;
 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Document(collection = "first_mongo")
-public class User {
-    @Id
-    private String id;
-    private String value;
+public class User implements Serializable {
+        private static final long serialVersionUID = -3258839839160856613L;
+        private String  id;
+        private String userName;
+        private String passWord;
 
-    @Override
-    public String toString() {
-        return "PrimaryMongoObject{" + "id='" + id + '\'' + ", value='" + value + '\''
-                + '}';
-    }
+        public User(String userName, String passWord) {
+                this.userName = userName;
+                this.passWord = passWord;
+        }
+
+        public String getId() {
+                return id;
+        }
+
+        public void setId(String id) {
+                this.id = id;
+        }
+
+        public String getUserName() {
+                return userName;
+        }
+
+        public void setUserName(String userName) {
+                this.userName = userName;
+        }
+
+        public String getPassWord() {
+                return passWord;
+        }
+
+        public void setPassWord(String passWord) {
+                this.passWord = passWord;
+        }
+
+        @Override
+        public String toString() {
+                return "User{" +
+                        "id='" + id + '\'' +
+                        ", userName='" + userName + '\'' +
+                        ", passWord='" + passWord + '\'' +
+                        '}';
+        }
 }
